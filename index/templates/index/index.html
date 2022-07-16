@@ -1,0 +1,91 @@
+{% extends 'index/layout.html' %}
+{% load static %}
+{% block script %}
+<script src = "{% static 'index/index.js' %}" defer></script>
+<script src="{% static 'lib/cookie.min.js' %}" defer></script>
+{% endblock %}
+{% load static %}
+{% block body %}
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Red+Rose:wght@300;400;600&display=swap');
+    .card{
+        width: 10rem;
+        height: 5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 50px;
+        border-radius: 10px;
+        background-color: rgb(19, 125, 254);
+        overflow: hidden;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+        margin-right: 1rem;
+        margin-left: 1rem;
+    }
+    
+    </style>
+<div class="container-fluid">
+    <div class="topnav nav-effect siz">
+        <div class="nav-padding">
+            <span class="nav-ham" id="nav-ham" style="color: rgb(19, 125, 254);font-size:3rem;">&#9776;</span>
+            <img src = "{% static 'Icon/icon.png' %}" alt = "Quizzy Application" class="navbar-icon form-icon" 
+            style="height: 5rem; width:5rem;"
+            title = "Forms">
+            <span class="nav-text" title = "Forms"><a href = "{% url 'index' %}" class="nav-link" style="color: rgb(19, 125, 254);
+                font-size:3rem; margin-left: 25rem;">Quizzyfiy</a></span>
+            <a href="{% url 'logout' %}">
+                <img src = "{% static 'Icon/Logout.png' %}" alt = "Logout Icon" class="navbar-icon float-right logout-icon" style="height: 4rem; width:4rem;" title = "Logout">
+            </a>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="sidebar" id = "sidebar">
+        <span class="close-sidebar" id="close-sidebar">&times;</span>
+        <div class="sidebar-content">
+            <h4 class="sidebar-title">
+                <a href = "{% url 'index' %}" class="sidebar-title-link">
+                    <span>Quizzy</span>
+                </a>
+                <h4 style="color: rgb(3, 124, 63);">Currenty Active : {{forms.count}}</h4>
+            </h4>
+        </div>
+    </div>
+    <div style="height: 5rem;"></div>
+    <center>
+    <div class="create-form" style="background-color: white;">
+        <div class="container" >
+            <h2 class="forms-label">Start a new Quiz</h2>
+            <div class="form-template" style="margin:auto;
+            height: 12rem;">
+                <img src = "{% static 'Icon/blank.png' %}" style="height: 8rem;" alt = "Blank form" title = "Blank form" id="create-blank-form">
+                <h3>Add Quiz</h3>
+            </div>
+        </div>
+    </div>
+</center>
+    <div class="container">
+        <div class="form-list">
+            <h3 class="forms-label">Your forms:</h3>
+ 
+            {% for i in forms %}
+            <a href = "{% url 'edit_form' i.code %}" class="form-list-link">
+            <div class="card">
+                <div class="details">
+                    <h2 style="color:white ;">{{i.title}}</h2>
+                </div>
+                {% if i.createdAt == i.updatedAt %}
+                    <p class="form-list-timestamp" style="color:white">{{i.createdAt}}</p>
+                    {% else %}
+                    <p class="form-list-timestamp" style="color:white">{{i.updatedAt}}</p>
+                    {% endif %}
+            </div>
+            </a>
+            {% endfor %}
+            
+</div>
+
+{% endblock %}
