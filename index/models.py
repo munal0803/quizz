@@ -29,7 +29,7 @@ class Form(models.Model):
     creator = models.ForeignKey(User, on_delete = models.CASCADE, related_name = "creator")
     background_color = models.CharField(max_length=20, default = "#d9efed")
     text_color = models.CharField(max_length=20, default="#272124")
-    collect_email = models.BooleanField(default=False)
+    collect_email = models.BooleanField(default=True)
     authenticated_responder = models.BooleanField(default = False)
     edit_after_submit = models.BooleanField(default=False)
     confirmation_message = models.CharField(max_length = 10000, default = "Your response has been recorded.")

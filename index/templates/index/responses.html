@@ -141,21 +141,7 @@
                 <span class="modal-close-btn" id="close-setting">&times;</span>
                 <h1 class = "modal-title">Setting</h1>
                 <h4 class="setting-preview-form small-screen"><a href="{% url 'view_form' form.code %}">Preview form here</a></h4>
-                <div class="modal-division">
-                    <div class="form-group">
-                        <h3 class="modal-subtitle">General</h3>
-                        <input type="checkbox" id="collect_email"{% if form.collect_email %} checked {% endif %}>
-                        <label for="collect_email" class="setting-form-label">Collect email address</label>
-                    </div>
-                    <!-- <div class="form-group">
-                        <input type="checkbox" id="is_quiz" {% if form.is_quiz %} checked {% endif %}>
-                        <label for="is_quiz" class="setting-form-label">Make this as a quiz</label>
-                    </div> -->
-                    <div class="form-group">
-                        <input type="checkbox" id="authenticated_responder" {% if form.authenticated_responder %} checked {% endif %}>
-                        <label for="authenticated_responder" class="setting-form-label">Respondent account must be authenticated. (Signed in required)</label>
-                    </div>
-                </div>
+                
                 <div class="modal-division">
                     <div class="form-group">
                         <h3 class="modal-subtitle">Confirmation message:</h3>
@@ -166,8 +152,7 @@
                 <div class="modal-division">
                     <div class="form-group">
                         <h3 class="modal-subtitle">Respondents can:</h3>
-                        <input type="checkbox" id="edit_after_submit" {% if form.edit_after_submit %}checked{% endif %}>
-                        <label for="edit_after_submit" class="setting-form-label">Edit after submit</label>
+                        
                     </div>
                     <div class="form-group">
                         <input type="checkbox" id="allow_view_score" {% if form.allow_view_score %}checked{% endif %}>

@@ -11,7 +11,7 @@
 <div class = "container-fluid">
     <div class="form-topnav">
         <a href = "/">
-            <img src = "{% static 'Icon/icon.png' %}" alt = "Google Forms Icon(CLONE)" class="navbar-icon form-icon" title = "Forms" />
+            <img src = "{% static 'Icon/icon.png' %}" alt = "Quizz" class="navbar-icon form-icon" title = "Forms" />
         </a>
         <input class="nav-text nav-form-title edit-on-click input-form-title" value  = "{{form.title}}" type="text">
         <div class="float-right">
@@ -26,14 +26,11 @@
     </div>
     <div class="form-topnav">
         <div class="form-navigation center">
-            {% if form.is_quiz %}
+            
             <span class="col-4 navigation active">Questions</span>
             <span class="col-4 navigation score"><a href = "{% url 'score' form.code %}" class="link">Scores</a></span>
             <span class="col-4 navigation"><a href = "{% url 'responses' form.code %}" class="link">Responses</a></span>
-            {% else %}
-            <span class="col-6 navigation active">Questions</span>
-            <span class="col-6 navigation"><a href = "{% url 'responses' form.code %}" class="link">Responses</a></span>
-            {% endif %}
+            
         </div>
     </div>
     <div class="container">
@@ -45,14 +42,14 @@
             </div>
             <textarea class="form-description edit-on-click textarea-adjust txt-clr" rows="1" placeholder="Form description" spellCheck = "false"
             id="input-form-description">{{form.description}}</textarea>
-            {% if form.collect_email %}
+            
             <div class="collect-email txt-clr">
                 <h3 class="question-title">Email address <span class="require-star">*</span></h3>
                 <input type="text" autocomplete="off" aria-label="Valid email address" disabled dir = "auto" class="require-email-edit txtColor"
                 placeholder = "Valid email address" />
                 <p class="collect-email-desc">This form is collecting email addresses. <span class="open-setting">Change settings</span></p>
             </div>
-            {% endif %}
+        
         </div>
         {% for question in form.questions.all %}
         <div class="margin-top-bottom box question-box question" data-id="{{question.id}}">
@@ -164,21 +161,7 @@
                 <span class="modal-close-btn" id="close-setting">&times;</span>
                 <h1 class = "modal-title">Setting</h1>
                 <h4 class="setting-preview-form small-screen"><a href="{% url 'view_form' form.code %}">Preview form here</a></h4>
-                <div class="modal-division">
-                    <div class="form-group">
-                        <h3 class="modal-subtitle">General</h3>
-                        <input type="checkbox" id="collect_email"{% if form.collect_email %} checked {% endif %}>
-                        <label for="collect_email" class="setting-form-label">Collect email address</label>
-                    </div>
-                    <!-- <div class="form-group">
-                        <input type="checkbox" id="is_quiz" {% if form.is_quiz %} checked {% endif %}>
-                        <label for="is_quiz" class="setting-form-label">Make this as a quiz</label>
-                    </div> -->
-                    <div class="form-group">
-                        <input type="checkbox" id="authenticated_responder" {% if form.authenticated_responder %} checked {% endif %}>
-                        <label for="authenticated_responder" class="setting-form-label">Respondent account must be authenticated. (Signed in required)</label>
-                    </div>
-                </div>
+                
                 <div class="modal-division">
                     <div class="form-group">
                         <h3 class="modal-subtitle">Confirmation message:</h3>
@@ -189,8 +172,7 @@
                 <div class="modal-division">
                     <div class="form-group">
                         <h3 class="modal-subtitle">Respondents can:</h3>
-                        <input type="checkbox" id="edit_after_submit" {% if form.edit_after_submit %}checked{% endif %}>
-                        <label for="edit_after_submit" class="setting-form-label">Edit after submit</label>
+                        
                     </div>
                     <div class="form-group">
                         <input type="checkbox" id="allow_view_score" {% if form.allow_view_score %}checked{% endif %}>
