@@ -45,7 +45,7 @@ def register(request):
         password = request.POST["password"]
         email = request.POST["email"]
         confirmation = request.POST["confirmation"]
-        #check if the password is the same as confirmation
+        #password confirmation
         if password != confirmation:
             return render(request, "index/register.html", {
                 "message": "Passwords must match."

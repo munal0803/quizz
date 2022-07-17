@@ -708,7 +708,7 @@ form.sign-up-form {
       <div class="signin-signup">
         <form class="sign-in-form" method="POST" action = "{% url 'login' %}">
           <div class="form-group">
-            <h1 class="box-title">New Admin ?</h1>
+            <h1 class="box-title">Admin ?</h1>
             <p class="form-error">{{message}}</p>
             {% csrf_token %}
         </div>
@@ -761,7 +761,10 @@ form.sign-up-form {
           <i class="far fa-eye" id="toggleReg" style="cursor: pointer;"></i>
         </div>
 
-          
+          <label class="check">
+            <input type="checkbox" checked="checked">
+            <span class="checkmark">I accept the <a href="">terms and services</a></span>
+          </label>
           <input type="submit" value="Register" class="btn btn-dark form-control">
 
         </form>

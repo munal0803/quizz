@@ -30,14 +30,14 @@
 <div class="container-fluid">
     <div class="topnav nav-effect siz">
         <div class="nav-padding">
-            <span class="nav-ham" id="nav-ham" style="color: rgb(19, 125, 254);font-size:3rem;">&#9776;</span>
+            <span class="nav-ham" id="nav-ham" style="color: rgb(19, 125, 254);font-size:3rem;"></span>
             <img src = "{% static 'Icon/icon.png' %}" alt = "Quizzy Application" class="navbar-icon form-icon" 
-            style="height: 5rem; width:5rem;"
+            style="height: 4rem; width:4rem;"
             title = "Forms">
             <span class="nav-text" title = "Forms"><a href = "{% url 'index' %}" class="nav-link" style="color: rgb(19, 125, 254);
-                font-size:3rem; margin-left: 25rem;">Quizzyfiy</a></span>
+                font-size:2.5rem; margin-left: 25rem;">Quizzyfiy</a></span>
             <a href="{% url 'logout' %}">
-                <img src = "{% static 'Icon/Logout.png' %}" alt = "Logout Icon" class="navbar-icon float-right logout-icon" style="height: 4rem; width:4rem;" title = "Logout">
+                <img src = "{% static 'Icon/Logout.png' %}" alt = "Logout Icon" class="navbar-icon float-right logout-icon" style="height: 3rem; width:3rem; margin-right:1rem; margin-top: 0.5rem;" title = "Logout">
             </a>
         </div>
     </div>
@@ -50,12 +50,12 @@
                 <a href = "{% url 'index' %}" class="sidebar-title-link">
                     <span>Quizzy</span>
                 </a>
-                <h4 style="color: rgb(3, 124, 63);">Currenty Active : {{forms.count}}</h4>
+               
             </h4>
         </div>
     </div>
     <div style="height: 5rem;"></div>
-    <center>
+<center>
     <div class="create-form" style="background-color: white;">
         <div class="container" >
             <h2 class="forms-label">Start a new Quiz</h2>
@@ -69,19 +69,25 @@
 </center>
     <div class="container">
         <div class="form-list">
-            <h3 class="forms-label">Your forms:</h3>
+            <h3 class="forms-label">Your forms:<span><h4 style="color: rgb(3, 124, 63);">Currenty Active : {{forms.count}}</h4></span></h3>
+            
  
             {% for i in forms %}
             <a href = "{% url 'edit_form' i.code %}" class="form-list-link">
             <div class="card">
-                <div class="details">
+                
+                <center>
+                <div style="margin-top:1rem ;">
                     <h2 style="color:white ;">{{i.title}}</h2>
+                    <h5 style="color:white ;">{{i.description}}</h5>
                 </div>
-                {% if i.createdAt == i.updatedAt %}
+
+                </center>
+                <div> {% if i.createdAt == i.updatedAt %}
                     <p class="form-list-timestamp" style="color:white">{{i.createdAt}}</p>
                     {% else %}
                     <p class="form-list-timestamp" style="color:white">{{i.updatedAt}}</p>
-                    {% endif %}
+                    {% endif %}</div>
             </div>
             </a>
             {% endfor %}
